@@ -1,0 +1,121 @@
+.pad0
+{
+padding:0px;
+}
+.bg_black{
+background:#000;
+}
+.block-blog {
+	width: 100%;
+	height: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: rgba(226, 223, 223, 0.61);
+}
+.transperent_block {
+	padding: 0px;
+	position: relative;
+	overflow: hidden;
+	height: 250px;
+}
+.transperent_block img {
+width:100%;
+	height: 100%;
+}
+.transperent_block:hover .black_hover_block {
+	opacity: 1;
+	transform: translateY(-150px);
+	-webkit-transform: translateY(-150px);
+	-moz-transform: translateY(-150px);
+	-ms-transform: translateY(-150px);
+	-o-transform: translateY(-150px);
+}
+.transperent_block img {
+	z-index: 4;
+}
+.transperent_block .black_hover_block {
+	position: absolute;
+	bottom: 20%;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	width: 100%;
+}
+.transperent_block:hover .black_hover_block, .black_hover_block:hover {
+	bottom: 30%;
+	transition: all 0.3s ease-in-out;
+}
+.transperent_block .blur {
+	background-color: rgba(0,0,0,0.7);
+	height: 400px;
+	z-index: 5;
+	position: absolute;
+	width: 100%;
+}
+.transperent_block .black_hover_block_text {
+	z-index: 10;
+	color: #fff;
+	position: absolute;
+	height: 400px;
+	text-align: center;
+	top: -20px;
+	width: 100%;
+	
+}
+	.block_header{
+		margin-top:5px;}
+		.black_hover_block_text i:hover {
+    color: #77132f;
+}
+.black_hover_block_text i {
+    padding: 10px 10px;
+    font-size: 18px;
+    color: #fff;
+}
+.black_hover_block_text i:hover {
+color:#ffffffa6}
+
+.black_hover_block_text:hover .titl-h5 {
+    background-color: rgba(119, 19, 47, 0.60);
+}
+.titl-h5 {
+    border-top: 2px solid #77132f;
+    border-bottom: 2px solid #77132f;
+    padding: 10px;
+    margin-top: 0px;
+    line-height: 20px;
+	text-transform:uppercase;
+	padding-bottom: 5px;
+    background: #bd4476cc;
+}
+.btn-pink {
+    background-color: #77132f;
+    color: #fff;
+    border: 4px solid #77132f;
+}
+.btn-pink:hover{
+color: #fff;
+    background-color: #6f0f2a9e;
+    border: 4px solid #6f0f2a4e;
+}
+.btn-sm {
+    margin-top: 10px;
+}
+.black_hover_block_text li:hover {
+    background-color: #77132f;
+    cursor: pointer;
+    color: #fff;
+    width: 33.34%;
+}
+.black_hover_block_text li {
+    list-style: none;
+    border: none !important;
+}
+
+.btn-more-details{
+	font-size:15px;
+	font-weight:bold;
+}
+	

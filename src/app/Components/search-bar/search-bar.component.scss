@@ -1,0 +1,23 @@
+
+ul {
+  display: table;
+  width: 100%;
+  text-align: center;
+  background: #c9faff94; 
+  li:last-child{
+    border-right:none;
+  }
+  li{
+    display: table-cell;
+    border-right: 1px solid #00bcd4;
+    a{
+      img{
+        width: 75px;
+      }
+      span{
+        font-size: 20px;
+        display: block;
+      }
+    }
+  }
+}
