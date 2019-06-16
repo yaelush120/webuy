@@ -1,23 +1,115 @@
 
-ul {
-  display: table;
-  width: 100%;
-  text-align: center;
-  background: #c9faff94; 
-  li:last-child{
-    border-right:none;
-  }
-  li{
-    display: table-cell;
-    border-right: 1px solid #00bcd4;
-    a{
-      img{
-        width: 75px;
-      }
-      span{
-        font-size: 20px;
-        display: block;
-      }
-    }
-  }
+a {text-decoration: none;
+	img{
+		width: 50px;
+	}
 }
+h1 {
+	font-size: 40px;
+  	font-weight: 700;
+	margin-bottom: 20px;
+  	margin-top: 20px;
+}
+h2 {
+	font-size: 15px;
+  	font-weight: 600;
+	margin-bottom: 30px;
+  	margin-top: 10px;
+}
+.container {
+	margin: auto;
+	width: 940px;
+}
+.ul-reset {
+	padding-left: 0;
+   margin-top: 0;
+   margin-bottom: 0;
+	list-style: none;
+}
+
+
+
+/* #Navigation Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+nav {
+	background: #424242;
+	font-size: 0;
+	position: relative;
+	margin-bottom: 10px;
+}
+nav > ul > li {
+	display: inline-block;
+  	font-size: 14px;
+  	padding: 0 15px;
+  	position: relative;
+}
+nav > ul > li:first-child {padding-left: 0;}
+nav > ul > li:last-child {padding-right: 0;}
+nav > ul > li > a {
+	color: #fff;
+  	display: block;
+  	position: relative;
+  	padding: 5px 0;
+  	border-bottom: 3px solid transparent;
+}
+nav > ul > li:hover > a {
+	color: #69aae0; 
+  	border-bottom: 3px solid #69aae0;
+}
+
+
+
+/* #Mega Menu Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mega-menu {
+	background: #f0f0f0;
+  	display: none;
+  	left: 0;
+  	position: absolute;
+  	text-align: left;
+    width: 100%;
+    z-index: 11;
+}
+.mega-menu h4 {color: #444;}
+.mega-menu ul {
+	float: right;
+	text-align: right;
+  	margin-bottom: 20px;
+  	margin-right: 40px;
+  	width: 205px;
+}
+.mega-menu ul:last-child {margin-right: 0;}
+.mega-menu a {
+	border-bottom: 1px solid #f56e00;
+  	color: #1d7fe4cc;
+  	display: block;
+		padding: 10px 0;
+		font-weight: bold;
+}
+.mega-menu a:hover {color: #2d6a91;}
+
+
+
+/* #Droppable Class Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.droppable {position: static !important;}
+.droppable > a:after {
+	content: "\f107";
+  	font-family: FontAwesome;
+  	font-size: 12px;
+  	padding-left: 6px;
+  	position: relative;
+  	top: -1px;
+}
+.droppable:hover .mega-menu {display: block;}
+
+
+
+/* #Browser Clearfix
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.cf:before,
+.cf:after {
+	content: " "; /* 1 */
+   display: table; /* 2 */
+}
+.cf:after {clear: both;}

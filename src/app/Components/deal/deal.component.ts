@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Deal } from '../../Entities/Deal';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-deal',
@@ -8,11 +9,13 @@ import { Deal } from '../../Entities/Deal';
 })
 export class DealComponent implements OnInit {
 
+  curDate;
   @Input() deal: Deal;
 
   constructor() { }
 
   ngOnInit() {
+    this.curDate=Date.now();
   }
 
 }

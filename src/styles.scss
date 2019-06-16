@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+  /* You can add global styles to this file, and also import other style files */
+
+  @import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+
+  body{
+      font-family: 'Heebo', sans-serif !important;
+      background-image: linear-gradient(to right, rgba(255,0,0,0), #1d7fe4cc);
+      color: #ddd;
+      font-size: 14px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  html {box-sizing: border-box;}
+  *, *:before, *:after {box-sizing: inherit;  }
