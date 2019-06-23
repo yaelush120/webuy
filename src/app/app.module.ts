@@ -9,6 +9,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { DealComponent } from './Components/deal/deal.component';
 import { DealListComponent } from './Components/deal-list/deal-list.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
+import { DealDetailsComponent } from './Components/deal-details/deal-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SearchBarComponent } from './Components/search-bar/search-bar.component
     NavBarComponent,
     DealComponent,
     DealListComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DealDetailsComponent
   ],
   imports: [
     BrowserModule,

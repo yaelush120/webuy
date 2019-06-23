@@ -7,15 +7,16 @@
       <div class="black_hover_block_text">
           <h5 class="titl-h5">{{deal.Name}}</h5>
         <ul class="pad0 bg_black">
-          <li class="col-sm-4 float-left pad0"> 23 <span class="fas fa-user-friends"></span></li>
-          <li class="col-sm-4 pad0 float-left"> 3 <span class="fa fa-thumbs-o-up"></span></li>
+          <li class="col-sm-4 float-left pad0"> 23 <span class="fa fa-user-plus"></span></li>
+          <li class="col-sm-4 pad0 float-left"> 3 <span class="far fa-heart"></span></li>
           <li class="col-sm-4 pad0 float-left"> 103 <span class="fa fa-share-alt"></span></li>
           <div class="clearfix"></div>
         </ul>
 
-        
+
         <p>{{deal.Description}}</p>
-        <a class=" btn btn-orange btn-more-details" href="#">לפרטים</a>
+        <a class=" btn btn-orange btn-more-details" [routerLink]="['/deal', deal.Id]" routerLink="/deal">לפרטים</a>
+        <a class=" btn btn-orange btn-more-details" [routerLink]="['/deal', deal.Id]" routerLink="/deal">צרף אותי</a>
         <div class="block_header">
           <span class="far fa-clock">{{deal.DueDate - curDate  | date}}</span>
         </div>

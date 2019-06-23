@@ -27,4 +27,9 @@ export class DealService {
     return this.data;
   }
 
+  getDealDetails(DealId):Deal
+  {
+    return this.getDeals().filter(x=>x.Id==DealId)[0];
+  }
+
 }
