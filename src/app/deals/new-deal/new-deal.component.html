@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Angular 7 Reactive Form Validation</h3>
+              <form [formGroup]="createDealForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label>Product Name</label>
+                      <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                          <div *ngIf="f.name.errors.required">Product name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Description</label>
+                      <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+                      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                          <div *ngIf="f.description.errors.required">Description is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Main Category:</label>
+                    <select (change)="onSelect($event.target.value)">
+                      <option value="0">--Select--</option>
+                      <option *ngFor="let mc of mainCategories" value= {{mc.id}}>{{mc.name}}</option>
+                    </select>
+                  </div>
+                    <div class="form-group">
+                    <label>Sub Category:</label>
+                    <select>
+                      <option value="0">--Select--</option>
+                      <option *ngFor="let sc of SubCategories " value= {{sb.id}}>{{sb.name}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary">צור קבוצה</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
