@@ -1,3 +1,81 @@
-<p>
-  sign-up works!
-</p>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>משתמש חדש</h3>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="type">בחר סוג משתמש</label>
+                        +<p-selectButton [options]="types" formControlName="type"></p-selectButton>
+                        <p>Selected Type: <span style="font-weight: bold">{{f.type.value}}</span></p>
+                        <div *ngIf="submitted && f.type.value==''" class="invalid-feedback">
+                            <div *ngIf="f.type.value==''">חובה לבחור סוג משתמש</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">שם פרטי</label>
+                        <input type="text" formControlName="firstName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">חובה להזין שם פרטי</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">שם משפחה</label>
+                        <input type="text" formControlName="lastName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors.required">חובה להזין שם משפחה</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">שם משתמש</label>
+                        <input type="text" formControlName="userName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+                        <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                            <div *ngIf="f.userName.errors.required">חובה להזין שם משתמש</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">כתובת מייל</label>
+                        <input type="text" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">חובה להזין כתובת מייל</div>
+                            <div *ngIf="f.email.errors.email">כתובת מייל אינה תקינה</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">טלפון </label>
+                        <input type="text" formControlName="phone" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required">חובה להזין מספר טלפון</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">סיסמא</label>
+                        <input type="password" formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">חובה להזין סיסמא</div>
+                            <div *ngIf="f.password.errors.minlength">על הסיסמא להכיל 6 תווים לפחות</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">אימות סיסמא</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPassword.errors.required">חובה להזין אימות סיסמא</div>
+                            <div *ngIf="f.confirmPassword.errors.mustMatch">הסיסמאות שהזנת אינן זהות</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">הרשמה</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,30 @@
 <div class=" mt-4">
-  <nav class="mb-4 navbar navbar-expand-lg navbar-dark cyan">
+  <nav class="mb-4 navbar navbar-expand-lg">
     <a class="navbar-brand font-bold" href="#">WeBuy</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-      <ul class="navbar-nav ml-auto">
+      
+      <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa fa-gear"></i> הרשמה</a>
+          <a class="nav-link" [routerLink]="['/authentication/sign-up']"><i class="fa fa-gear"></i> הרשמה</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link"><i class="fa fa-user"></i> התחברות </a>
+          <a class="nav-link" [routerLink]="['/authentication/login']"><i class="fa fa-user"></i> התחברות </a>
         </li>
       </ul>
+
+      <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>התנתקות</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/dashboard/deals/my-deals']"><i class="fa fa-gear"></i>לאזור האישי</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" style="cursor: default;"><i class="fa fa-user"></i> היי
+            {{currentUser.firstName+' '+currentUser.lastName}}</a>
+        </li>
+      </ul>
+
     </div>
   </nav>
 </div>

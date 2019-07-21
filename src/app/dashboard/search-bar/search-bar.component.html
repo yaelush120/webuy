@@ -1,129 +1,15 @@
 <nav>
       <ul class="container ul-reset">
-            <li class='droppable'>
-                  <a href='#'><img src="/assets/images/camera.svg">מוצרי חשמל</a>
+            <li class='droppable' *ngFor="let category of this.categories">
+                  <a href='#'>
+                        {{category.name}}</a>
                   <div class='mega-menu'>
                         <div class="container cf">
-                              <ul class="ul-reset">
-                                    <h4>טיפוח</h4>
-                                    <li><a href='#'>מייבשי שיער</a></li>
-                                    <li><a href='#'>בייביליס</a></li>
-                                    <li><a href='#'>מכונות תספורת</a></li>
-                                    <li><a href='#'>מכונות גילוח</a></li>
-                                    <li><a href='#'>מכשירי עיסוי</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>כללי</h4>
-                                    <li><a href='#'>מקררים</a></li>
-                                    <li><a href='#'>תנורים</a></li>
-                                    <li><a href='#'>מדיח כלים</a></li>
-                                    <li><a href='#'>מכונות כביסה</a></li>
-                                    <li><a href='#'>מייבשי כביסה</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>חשמל לבית</h4>
-                                    <li><a href='#'>ראדיאטור</a></li>
-                                    <li><a href='#'>שואבי אבק</a></li>
-                                    <li><a href='#'>מדפסת ופקס</a></li>
-                                    <li><a href='#'>מזגנים</a></li>
-                                    <li><a href='#'>מכונות תפירה</a></li>
-                              </ul>
-                        </div>
-                  </div>
-            </li>
-            <li class='droppable'>
-                  <a href='#'><img src="/assets/images/chair.svg">ריהוט לבית ולגן</a>
-                  <div class='mega-menu'>
-                        <div class="container cf">
-                              <ul class="ul-reset">
-                                    <h4>סלון</h4>
-                                    <li><a href='#'>ספות</a></li>
-                                    <li><a href='#'>פינות אוכל</a></li>
-                                    <li><a href='#'>אקססוריז</a></li>
-                                    <li><a href='#'>שטיחים</a></li>
-                                    <li><a href='#'>שולחנות קפה</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>חדרי שינה</h4>
-                                    <li><a href='#'>מצעים</a></li>
-                                    <li><a href='#'>ארונות</a></li>
-                                    <li><a href='#'>מיטות</a></li>
-                                    <li><a href='#'>שידות</a></li>
-                                    <li><a href='#'>שולחנות מחשב</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>ריהוט גן</h4>
-                                    <li><a href='#'>דשא סינטטי</a></li>
-                                    <li><a href='#'>ספות גן</a></li>
-                                    <li><a href='#'>צעצועי גינה</a></li>
-                              </ul>
-                        </div>
-                  </div>
-            </li>
-            <li class='droppable'>
-                  <a href='#'><img src="/assets/images/baby-boy.svg">לתינוק ולילד</a>
-                  <div class='mega-menu'>
-                        <div class="container cf">
-                              <ul class="ul-reset">
-                                    <h4>ריהוט</h4>
-                                    <li><a href='#'>עריסות ומיטות</a></li>
-                                    <li><a href='#'>שידות החתלה</a></li>
-                                    <li><a href='#'>מצעים</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>לרכב</h4>
-                                    <li><a href='#'>כיסאות בטיחות</a></li>
-                                    <li><a href='#'>בוסטרים</a></li>
-                                    <li><a href='#'>מראות וצעצועים</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>צעצועים</h4>
-                                    <li><a href='#'>טרמפולינה</a></li>
-                                    <li><a href='#'>אוניברסיטה</a></li>
-                                    <li><a href='#'>בימבות ואופניים</a></li>
-                                    <li><a href='#'>לגו</a></li>
-                                    <li><a href='#'>משחקי התפתחות</a></li>
-                              </ul>
-                        </div>
-                  </div>
-            </li>
-            <li class='droppable'>
-                  <a href='#'><img src="/assets/images/gift-card.svg">למטבח</a>
-                  <div class='mega-menu'>
-                        <div class="container cf">
-                              <ul class="ul-reset">
-                                    <h4>עזרים לבישול</h4>
-                                    <li><a href='#'>מעבד מזון</a></li>
-                                    <li><a href='#'>מיקסר</a></li>
-                                    <li><a href='#'>מטחנת בשר</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>אפייה</h4>
-                                    <li><a href='#'>אופה לחם</a></li>
-                                    <li><a href='#'>טוסטר אובן</a></li>
-                                    <li><a href='#'>מיקרוגל</a></li>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>כלים</h4>
-                                    <li><a href='#'>מחבתות</a></li>
-                                    <li><a href='#'>סירים</a></li>
-                                    <li><a href='#'>סכום</a></li>
-                              </ul>
-                        </div>
-                  </div>
-            </li>
-            <li class='droppable'>
-                  <a href='#'><img src="/assets/images/boy.svg">המוצרים שלי</a>
-                  <div class='mega-menu'>
-                        <div class="container cf">
-                              <ul class="ul-reset">
-                                    <h4>דילים שפתחתי</h4>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>דילים שהצטרפתי</h4>
-                              </ul>
-                              <ul class="ul-reset">
-                                    <h4>דילים שאהבתי</h4>
+                              <ul class="ul-reset" *ngFor="let sub1 of category.subMenu">
+                                    <h4>{{sub1.name}}</h4>
+                                    <li *ngFor="let sub2 of sub1.subMenu">
+                                          <a href='#'>{{sub2.name}}</a>
+                                    </li>
                               </ul>
                         </div>
                   </div>

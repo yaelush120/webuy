@@ -1,21 +1,15 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
 
-.cyan {
-    background-color: #f56e00 !important;
+.navbar {
+    background-color: #2BBBAD !important;
     margin-bottom: 10px !important;
 }
 
 .hm-gradient {
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
-.darken-grey-text {
-    color: #2E2E2E;
-}
 
-.navbar .dropdown-menu a:hover {
-    color: #616161 !important;
-}
-.darken-grey-text {
-    color: #2E2E2E;
+.navbar a {
+    color: white !important;
 }

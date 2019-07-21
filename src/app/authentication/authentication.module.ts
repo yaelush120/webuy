@@ -5,6 +5,10 @@ import { SignUpComponent } from '../authentication/sign-up/sign-up.component';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -12,7 +16,10 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    ReactiveFormsModule,
+    SelectButtonModule,
+    FormsModule
   ]
 })
 export class AuthenticationModule { }

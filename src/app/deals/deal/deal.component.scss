@@ -1,11 +1,13 @@
-a.btn.btn-orange.btn-more-details:visited {
-    background-color: #f57c00 !important;
+.btn-more-details {
+	font-weight:bold;
+	font-size: 15.5px;
+	border: 1px dotted white;
+	border-radius: 20px;
 }
 
-a.btn.btn-orange.btn-more-details:hover {
-	background-color: #f56e00  !important;
-	font-size: 15.5px;
-    border: 1px dotted white;
+span.price{
+	font-size: 25px;
+    font-weight: bold;
 }
 
 .pad0
@@ -15,6 +17,7 @@ padding:0px;
 .bg_black{
 background:#000;
 padding: 5px;
+margin-bottom: 10px;
 }
 .block-blog {
 	width: 100%;
@@ -27,8 +30,8 @@ padding: 5px;
 	padding: 0px;
 	position: relative;
 	overflow: hidden;
-	height: 250px;
-	border: 2px dotted #f57c00;
+	height: 300px;
+	border: 2px dotted #5bc3bd;
 }
 .transperent_block img {
 width:100%;
@@ -72,7 +75,7 @@ width:100%;
 	position: absolute;
 	height: 400px;
 	text-align: center;
-	top: -15px;
+	top: -50px;
 	width: 100%;
 	
 }
@@ -106,6 +109,11 @@ color:#ffffffa6}
 	padding-bottom: 5px;
 	background: #1d7fe4cc;
 	margin-bottom: 0px;
+
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: rtl;
 }
 .btn-pink {
     background-color: #134477;
@@ -134,11 +142,9 @@ color: #fff;
 .black_hover_block_text p {
 	font-size: 20px;
 	margin:20px;
-    border: none !important;
-}
-
-.btn-more-details{
-	font-size:15px;
-	font-weight:bold;
-}
+	border: none !important;
 	
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}

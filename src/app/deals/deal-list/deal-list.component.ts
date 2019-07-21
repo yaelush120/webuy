@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Deal } from '../../Entities/Deal';
-import { DealService } from 'src/app/Services/deal.service';
+import { BackendService } from 'src/app/Services/backend.service';
+import { AuthenticationService } from 'src/app/Services/authentication.service.';
+import { User } from 'src/app/Entities/User';
+import { BaseComponent } from 'src/app/base/base.component';
+import { DALService } from 'src/app/Services/DAL.service';
 
 @Component({
   selector: 'app-deal-list',
   templateUrl: './deal-list.component.html',
-  styleUrls: ['./deal-list.component.sass']
+  styleUrls: ['./deal-list.component.scss']
 })
-export class DealListComponent implements OnInit {
+export class DealListComponent extends BaseComponent {
 
-  data:Deal[]=[]
+  data:any
 
-  constructor(private dealService:DealService) { }
+  constructor(private dal:DALService, private authService: AuthenticationService) {
+    super(authService);
+  }
 
   ngOnInit() {
-    this.data=this.dealService.getDeals();
+    this.dal.getAllDeals().then(x => {
+      this.data=x;
+    });
   }
 
 }

@@ -1,25 +1,26 @@
   <div class="transperent_block " style="background-color:#cccccc;">
-    <img src="{{deal.Img}}" class="img-responsive"
-      alt="">
+    <!-- <img src="{{deal.img1}}" class="img-responsive" alt=""> -->
 
     <div class="black_hover_block">
       <div class="blur"></div>
       <div class="black_hover_block_text">
-          <h5 class="titl-h5">{{deal.Name}}</h5>
+          <h5 class="titl-h5">{{deal.name}}</h5>
         <ul class="pad0 bg_black">
-          <li class="col-sm-3 float-left pad0"> 23 <span class="fa fa-user-plus"></span></li>
-          <li class="col-sm-3 pad0 float-left"> 3 <span class="far fa-heart"></span></li>
-          <li class="col-sm-3 pad0 float-left"> 103 <span class="fa fa-share-alt"></span></li>
+          <li class="col-sm-3 float-left pad0" (click)="addMember()">{{deal.Members}} <span class="fa fa-user-plus"></span></li>
+          <li class="col-sm-3 pad0 float-left" (click)="addLikes()"> {{deal.Likes}}<span class="far fa-heart"></span></li>
+          
           <li class="col-sm-3 pad0 float-left"><span class="far fa-bell"></span></li>
+          <li class="col-sm-3 pad0 float-left"><span class="fa fa-share-alt"></span></li>
           <div class="clearfix"></div>
         </ul>
-        <span>250שח</span>
-        <p>{{deal.Description}}</p>
-        <a class=" btn btn-orange btn-more-details" [routerLink]="['../deal-details', deal.Id]">לפרטים</a>
-        <a class=" btn btn-orange btn-more-details" [routerLink]="['../deal-details', deal.Id]">צרף אותי</a>
-        <div class="block_header">
+        <i class="fas fa-shekel-sign"></i>
+        <span class="price">{{deal.startPrice}}</span>
+        <p style="-webkit-box-orient: vertical;">{{deal.description}}</p>
+        <a class=" btn btn-default btn-more-details" [routerLink]="['../deal-details', deal.dealId]">לפרטים</a>
+        <!-- <a class=" btn btn-default btn-more-details" (click)="addMember()">צרף אותי</a> -->
+        <!-- <div class="block_header">
           <span class="far fa-clock">{{deal.DueDate - curDate  | date}}</span>
-        </div>
-
+        </div> -->
+        <app-share></app-share>
       </div>
     </div>
