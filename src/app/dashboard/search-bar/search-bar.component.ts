@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DALService } from 'src/app/Services/DAL.service';
 
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -9,6 +10,7 @@ import { DALService } from 'src/app/Services/DAL.service';
 export class SearchBarComponent implements OnInit {
 
   categories:any;
+  rangeValues: number[] = [20,80];
 
   constructor(private dal:DALService) { }
 

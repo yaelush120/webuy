@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
 import {FileUploadModule} from 'primeng/fileupload';
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {FileUploadModule} from 'primeng/fileupload';
     FormsModule,
     ReactiveFormsModule,
     GalleriaModule,
-    FileUploadModule
+    FileUploadModule,
+    SliderModule
   ]
 })
 export class DealsModule { }
