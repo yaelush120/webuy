@@ -1,14 +1,24 @@
+
+<button (click)="cleanSearch()">נקה</button><br>
+<input placeholder="min" #min > 
+<input placeholder="max" #max>
+<button (click)="searchByPriceRange(min.value,max.value)">חפש</button><br>
+<input placeholder="start Date" #startDate type="date"> 
+<input placeholder="end Date" #endDate type="date">
+<button (click)="searchBydueDateRange(startDate.value,endDate.value)">חפש</button><br>
+<input #searchTxt>
+<button (click)="searchByTxt(searchTxt.value)">חפש</button>
 <nav>
       <ul class="container ul-reset">
             <li class='droppable' *ngFor="let category of this.categories">
-                  <a href='#'>
+                  <a (click)="search(category.categoryId)">
                         {{category.name}}</a>
                   <div class='mega-menu'>
                         <div class="container cf">
                               <ul class="ul-reset" *ngFor="let sub1 of category.subMenu">
-                                    <h4>{{sub1.name}}</h4>
+                                    <h4><a (click)="search(sub1.categoryId)">{{sub1.name}}</a></h4>
                                     <li *ngFor="let sub2 of sub1.subMenu">
-                                          <a href='#'>{{sub2.name}}</a>
+                                          <a (click)="search(sub2.categoryId)">{{sub2.name}}</a>
                                     </li>
                               </ul>
                         </div>

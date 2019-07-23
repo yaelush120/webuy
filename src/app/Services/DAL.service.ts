@@ -1,27 +1,65 @@
 import { Injectable } from "@angular/core";
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
 })
 export class DALService {
+  
   private _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  allDeals: any;
+
   deal:any;
   allCategories: any;
   result:any;
 
+  private allDeals = new BehaviorSubject<any>({});
+  allDealsObservable = this.allDeals.asObservable();
+  
+  private fillteredDeals = new BehaviorSubject<any>({});
+  fillteredDealsObservable = this.fillteredDeals.asObservable();
+  
+  
+
   constructor(private http: HttpClient) {
 
   }
-
+  getAllDealsList() {
+    return this.allDeals.getValue();
+  }
+  setAllDealsList(list:any) {
+    this.allDeals.next(list);
+  }
+  getAllFilterDealsList() {
+    return this.fillteredDeals.getValue();
+  }
+  setAllFilterDealsList(list:any) {
+    this.fillteredDeals.next(list);
+  }
   getAllDeals() {
-    this.allDeals = this.http.get<any>("http://localhost:54267/api/Deal/GetDeals")
+   var allDeal=  this.http.get<any>("http://localhost:54267/api/Deal/GetDeals")
     .toPromise()
     .then(res => res = <any[]>res)
 
-    return this.allDeals;
+    return allDeal;
+  }
+
+  GetUserPersonalDeals(userId)
+  {
+    this.result = this.http.get<any>("http://localhost:54267/api/Deal/GetUserPersonalDeals?userId="+userId)
+    .toPromise()
+    .then(res => res = <any[]>res)
+
+    return this.result;
+  }
+
+  getDeal(dealId) {
+    this.deal = this.http.get<any>(`http://localhost:54267/api/Deal/GetDeal?dealId=${dealId}`)
+    .toPromise()
+    .then(res => res = <any[]>res)
+
+    return this.deal;
   }
 
   saveDeal(newDeal:any)
@@ -62,6 +100,13 @@ export class DALService {
     .then(res => res = <any[]>res)
 
     return this.result;
+  }
+
+  GetBidHistory(dealId) {
+    this.allCategories = this.http.get(`http://localhost:54267/api/Bid/GetBidHistory?dealId=${dealId}`)
+    .toPromise()
+
+    return this.allCategories;
   }
 
   getAllCategories() {

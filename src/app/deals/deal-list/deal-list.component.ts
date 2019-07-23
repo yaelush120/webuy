@@ -20,9 +20,18 @@ export class DealListComponent extends BaseComponent {
   }
 
   ngOnInit() {
-    this.dal.getAllDeals().then(x => {
+    this.dal.getAllDeals().then(y=>{
+      this.dal.setAllDealsList(y);
+      this.dal.setAllFilterDealsList(y);
+      this.data= y;
+    })
+    this.dal.fillteredDealsObservable.subscribe(x=>{
       this.data=x;
-    });
+    })
+    // this.dal.getAllDeals().then(x => {
+    //   this.data=x;
+    //   this.dal.setAllDealsList(x);
+    // });
   }
 
 }

@@ -24,6 +24,38 @@ export class SearchBarComponent implements OnInit {
         }
       }
     });
+
+ 
+  }
+  search(categoryId:number){
+    var filter= this.dal.getAllDealsList().filter(x=>{
+     return x.category1==categoryId ||  x.category2==categoryId || x.category3==categoryId 
+    });
+    this.dal.setAllFilterDealsList(filter);
+  }
+  searchByTxt(txt:string){
+    var filter= this.dal.getAllDealsList().filter(x=>{
+      return (x.name.indexOf(txt) > -1 || x.description.indexOf(txt) > -1 );
+    });
+    this.dal.setAllFilterDealsList(filter);
+
+  }
+  searchByPriceRange(min:number,max:number){
+    var filter= this.dal.getAllDealsList().filter(x=>{
+      return (x.currentPrice > min && x.currentPrice <max);
+    });
+    this.dal.setAllFilterDealsList(filter);
+
+  }
+  searchBydueDateRange(startDate:number,endDate:number){
+    var filter= this.dal.getAllDealsList().filter(x=>{
+      return (x.dueDate > startDate && x.dueDate <endDate);
+    });
+    this.dal.setAllFilterDealsList(filter);
+
+  }
+  cleanSearch(){
+    this.dal.setAllFilterDealsList(this.dal.getAllDealsList());
   }
 
 }
