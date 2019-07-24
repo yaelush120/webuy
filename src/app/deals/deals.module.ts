@@ -13,6 +13,7 @@ import {GalleriaModule} from 'primeng/galleria';
 import {FileUploadModule} from 'primeng/fileupload';
 import {SliderModule} from 'primeng/slider';
 
+
 @NgModule({
   declarations: [
     DealComponent,
@@ -21,6 +22,7 @@ import {SliderModule} from 'primeng/slider';
     NewDealComponent,
     ShareComponent,
     MyDealsComponent
+  
   ],
   imports: [
     CommonModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DateValidator } from "src/app/general/Date.validator";
 import { DALService } from "src/app/Services/DAL.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-new-deal",
@@ -18,8 +18,14 @@ export class NewDealComponent implements OnInit {
   Categories2: any;
   Categories3: any;
   dealImages: any;
+imagesFiles:any;
+  newDeal: any ={};
 
-  constructor(private formBuilder: FormBuilder, private dal: DALService,private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private dal: DALService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.createDealForm = this.formBuilder.group({
@@ -70,37 +76,60 @@ export class NewDealComponent implements OnInit {
       return;
     }
 
-    let newDeal = {
-      DealId: null,
-      Name: this.createDealForm.controls.name.value,
-      Description: this.createDealForm.controls.description.value,
-      DueDate: this.createDealForm.controls.dueDate.value,
-      StartPrice: parseInt(this.createDealForm.controls.startPrice.value),
-      Category1: parseInt(this.createDealForm.controls.category1.value.categoryId),
-      Category2: parseInt(this.createDealForm.controls.category2.value.categoryId),
-      Category3: parseInt(this.createDealForm.controls.category3.value.categoryId),
-      Img1: null,
-      Img2: null,
-      Img3: null,
-      Img4: null
-    };
+    this.newDeal.DealId = null;
+    this.newDeal.Name = this.createDealForm.controls.name.value;
+    this.newDeal.Description = this.createDealForm.controls.description.value;
+    this.newDeal.DueDate = this.createDealForm.controls.dueDate.value;
+    this.newDeal.StartPrice = parseInt(
+      this.createDealForm.controls.startPrice.value
+    );
+    this.newDeal.Category1 = parseInt(
+      this.createDealForm.controls.category1.value.categoryId
+    );
+    this.newDeal.Category2 = parseInt(
+      this.createDealForm.controls.category2.value.categoryId
+    );
+    this.newDeal.Category3 = parseInt(
+      this.createDealForm.controls.category3.value.categoryId
+    );
 
-    // if (this.dealImages.length > 0) {
-    //   newDeal.img1 = this.dealImages[0].objectURL.changingThisBreaksApplicationSecurity;
-    //   if (this.dealImages.length > 1) {
-    //     newDeal.img2 = this.dealImages[1].objectURL.changingThisBreaksApplicationSecurity;
-    //   }
-    //   if (this.dealImages.length > 2) {
-    //     newDeal.img3 = this.dealImages[2].objectURL.changingThisBreaksApplicationSecurity;
-    //   }
-    //   if (this.dealImages.length > 3) {
-    //     newDeal.img4 = this.dealImages[3].objectURL.changingThisBreaksApplicationSecurity;
-    //   }
-    // }
+    this.dal.uploadImages(this.imagesFiles);
 
-    this.dal.saveDeal(newDeal).subscribe(res => {
+    this.dal.saveDeal(this.newDeal).subscribe(res => {
+    
       alert("הדיל נוסף בהצלחה!");
-      this.router.navigate(['/']);
+      this.router.navigate(["/"]);
     });
   }
+
+  public uploadFile = event => {
+    if (event.files.length === 0) {
+      return;
+    }
+
+    for (let i = 0; i < event.files.length; i++) {
+      switch (i) {
+        case 0: {
+          this.newDeal.img1 = event.files[i].name;
+          break;
+        }
+
+        case 1: {
+          this.newDeal.img2 = event.files[i].name;
+          break;
+        }
+
+        case 2: {
+          this.newDeal.img3 = event.files[i].name;
+          break;
+        }
+
+        case 3: {
+          this.newDeal.img4 = event.files[i].name;
+          break;
+        }
+      }
+    }
+    this.imagesFiles=event.files;
+  };
 }

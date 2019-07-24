@@ -157,3 +157,8 @@ img {
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1); } }
+
+            ::ng-deep .card img {
+              
+              height: 280px !important;
+          }

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpEventType } from "@angular/common/http";
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -115,5 +115,29 @@ export class DALService {
     //.then(res => res = <any[]>res)
 
     return this.allCategories;
+  }
+
+  uploadImages(files:any)
+  {
+    if(files.length>0)
+    {
+      files.forEach(x => {
+        let fileToUpload = <File>x;
+        const formData = new FormData();
+        formData.append('file', fileToUpload, fileToUpload.name);
+     
+        this.http.post('http://localhost:54267/api/Deal/Upload', formData, {reportProgress: true, observe: 'events'})
+          .subscribe(event => {
+            if (event.type === HttpEventType.UploadProgress){}
+              // this.progress = Math.round(100 * event.loaded / event.total);
+            else if (event.type === HttpEventType.Response) {
+              // this.message = 'Upload success.';
+              // this.onUploadFinished.emit(event.body);
+            }
+          });
+        
+      });
+    }
+    
   }
 }
