@@ -42,6 +42,8 @@ export class BaseDealComponent extends BaseComponent implements OnInit {
         else if(isIn)
         {
           deal.inCount+=1;
+          //Add Notification
+          this.dal.pushNotification(deal.dealId,'members',deal.inCount);
         }
 
         alert(msgSuccess);

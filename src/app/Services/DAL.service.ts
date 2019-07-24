@@ -78,6 +78,29 @@ export class DALService {
         }));
   }
 
+  saveNotification(newNotification)
+  {
+    return this.http.post("http://localhost:54267/api/Notification/SaveNotification",newNotification,this._options)
+        .pipe(map(data => {
+            return data;
+        }));
+  }
+
+  getNotification(dealId, prop, value) {
+    this.result = this.http.get(`http://localhost:54267/api/Notification/GetPriceNotification?dealId=${dealId}&prop=${prop}&value=${value}`)
+    .toPromise()
+
+    return this.result;
+  }
+
+  pushNotification(dealId, prop, value)
+    {
+        let notifications = this.getNotification(dealId,prop,value)
+        .then(x => {
+          console.log(x);
+        });
+    }
+
   AddUserToDeal(dealId:string,userId:string, isLike=false, isIn=false)
   {
     let url="http://localhost:54267/api/UserInDeal/AddUserToDeal?dealId="+

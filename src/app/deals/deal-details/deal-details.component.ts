@@ -85,6 +85,9 @@ export class DealDetailsComponent extends BaseDealComponent {
 
       this.dataLayer.AddBid(dealId, userId, this.priceTxt).then(x => {
         if (x == true) {
+          //Add Notification
+          this.dataLayer.pushNotification(dealId,'price',this.priceTxt);
+
           alert("הצעתך נקלטה!");
           this.priceTxt = 0;
           this.getData();
@@ -108,7 +111,7 @@ export class DealDetailsComponent extends BaseDealComponent {
     var n = new Date().getTime();
     var d = new Date(countDownDate).getTime() - n;
     if (d < 0) {
-      document.getElementById('timeLeft').innerHTML = "הדיל הסתיים";
+      //document.getElementById('timeLeft').innerHTML = "הדיל הסתיים";
     } else {
       // Update the count down every 1 second
       this.timerInterval = setInterval(function() {
@@ -127,13 +130,13 @@ export class DealDetailsComponent extends BaseDealComponent {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        document.getElementById('timeLeft').innerHTML =
-          days + "ימים " + hours + ":" + minutes + ":" + seconds;
+        //document.getElementById('timeLeft').innerHTML =
+         // days + "ימים " + hours + ":" + minutes + ":" + seconds;
 
         // If the count down is finished, write some text
         if (distance < 0) {
           clearInterval(this.timerInterval);
-          document.getElementById("timeLeft").innerHTML = "הדיל הסתיים";
+          //document.getElementById("timeLeft").innerHTML = "הדיל הסתיים";
         }
       }, 1000);
     }

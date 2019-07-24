@@ -1,33 +1,50 @@
-  <div class="transperent_block " style="background-color:#cccccc;">
-    <img src="/assets/saveImg/{{deal.img1}}" class="img-responsive" alt="">
+<div class="transperent_block " style="background-color:#cccccc;">
+  <img src="/assets/saveImg/{{deal.img1}}" class="img-responsive" alt="">
 
-    <div class="black_hover_block">
-      <div class="blur"></div>
-      <div class="black_hover_block_text">
-          <h5 class="titl-h5">{{deal.name}}</h5>
-        <ul class="pad0 bg_black">
-          <a class="col-sm-3 float-left pad0" [class.disabled]="!isBuyer" (click)="AddUserToDeal('addMe',deal);" title="הצטרפות">{{deal.Members}} 
-            <span class="fa fa-user-plus">{{deal.inCount}}</span>
-          </a>
-          <a class="col-sm-3 pad0 float-left" [class.disabled]="isUnConnected" (click)="AddUserToDeal('like',deal);" title="הוספה למועדפים"> {{deal.Likes}}
-            <span class="far fa-heart">{{deal.likesCount}}</span>
-          </a>
-          <a class="col-sm-3 pad0 float-left" [class.disabled]="isUnConnected" title="התראות">
-            <span class="far fa-bell"></span>
-          </a>
-          <a class="col-sm-3 pad0 float-left" title="שיתוף">
-            <span class="fa fa-share-alt"></span>
-          </a>
-          <div class="clearfix"></div>
-        </ul>
+  <div class="black_hover_block">
+    <div class="blur"></div>
+    <div class="black_hover_block_text">
+      <h5 class="titl-h5">{{deal.name}}</h5>
+      <ul class="pad0 bg_black">
+        <a class="col-sm-3 float-left pad0" [class.disabled]="!isBuyer" (click)="AddUserToDeal('addMe',deal);"
+          title="הצטרפות">{{deal.Members}}
+          <span class="fa fa-user-plus">{{deal.inCount}}</span>
+        </a>
+        <a class="col-sm-3 pad0 float-left" [class.disabled]="isUnConnected" (click)="AddUserToDeal('like',deal);"
+          title="הוספה למועדפים"> {{deal.Likes}}
+          <span class="far fa-heart">{{deal.likesCount}}</span>
+        </a>
+        <a class="col-sm-3 pad0 float-left" [class.disabled]="isUnConnected"
+          (click)="showNotification=!showNotification" title="התראות">
+          <span class="far fa-bell"></span>
+        </a>
+        <a class="col-sm-3 pad0 float-left" title="שיתוף">
+          <span class="fa fa-share-alt"></span>
+        </a>
+        <div class="clearfix"></div>
+      </ul>
+      <div *ngIf="!showNotification">
         <i class="fas fa-shekel-sign"></i>
         <span class="price">{{deal.currentPrice}}</span>
         <p style="-webkit-box-orient: vertical;">{{deal.description}}</p>
         <a class=" btn btn-default btn-more-details" [routerLink]="['../deal-details', deal.dealId]">לפרטים</a>
-        <!-- <a class=" btn btn-default btn-more-details" (click)="addMember()">צרף אותי</a> -->
-        <!-- <div class="block_header">
-          <span class="far fa-clock">{{deal.DueDate - curDate  | date}}</span>
-        </div> -->
-        <app-share></app-share>
       </div>
+      <div class="notifications" *ngIf="showNotification">
+        <form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="number" min="0" max="{{deal.currentPrice}}" formControlName="price" class="form-control" placeholder="עדכן כשמחיר המוצר נמוך מ:" />
+          </div>
+          <div class="form-group">
+            <input type="number" min="1" max="5" formControlName="date" class="form-control" placeholder="עדכן כשהדיל מסתיים בעוד X ימים:" />
+          </div>
+          <div class="form-group">
+            <input type="number" min="{{deal.inCount}}" max="10000" formControlName="memebers" class="form-control" placeholder="עדכן כשכמות המשתתפים עולה על:" />
+          </div>
+          <div class="form-group">
+              <button class="btn btn-primary">אישור</button>
+          </div>
+        </form>
+      </div>
+      <app-share></app-share>
     </div>
+  </div>

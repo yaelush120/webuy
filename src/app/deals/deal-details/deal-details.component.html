@@ -25,7 +25,8 @@
           חברים משתתפים ברכישה זו
           <strong>{{deal.inCount}}</strong>
         </p>
-        <h4 class="price">הדיל יסגר בעוד: <span id="timeLeft"></span></h4>
+        <!-- <h4 class="price">הדיל יסגר בעוד: <span id="timeLeft"></span></h4> -->
+        <h4 class="price">הדיל יסגר בעוד: <span>{{this.deal.dueDate}}</span></h4> 
         <div class="action">
           
           <button *ngIf="isBuyer" class="add-to-cart btn btn-default" type="button"
