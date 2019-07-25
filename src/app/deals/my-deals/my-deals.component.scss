@@ -1,8 +1,15 @@
+.table{
+    direction: rtl;
+    td{
+        text-align: right;
+    }
+}
 .title{
     background-color:#d8e6e5 !important ;
     width: 100%;
     text-align: right;
     margin-top: 20px;
+    padding-right: 20px;
 }
 .msg{
     text-align: right;

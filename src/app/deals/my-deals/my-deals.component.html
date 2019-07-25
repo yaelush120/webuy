@@ -4,24 +4,16 @@
     <h1 class="title" *ngIf="i ==0 && isSupplier">פריטים שעקבתי אחריהם</h1>
     <h1 class="title" *ngIf="i ==1 && isBuyer">פריטים שהצטרפתי</h1>
     <h1 class="title" *ngIf="i ==2 && isSupplier">פריטים שהגשתי להם הצעת מחיר</h1>
+    <h1 class="title" *ngIf="i ==3">התראות</h1>
     <table class="table table-hover" *ngIf="item.length">
-        <!-- <thead>
-          <tr>
-            <th scope="col" hidden>מזהה</th>
-            <th scope="col">שם</th>
-            <th scope="col">מחיר</th>
-            <th scope="col">תמונה</th>
-            <th scope="col">תאריך סיום</th>
-          </tr>
-        </thead> -->
         <tbody>
 
           <tr *ngFor="let row of item" (dblclick)="openDeal(row.dealId)">
             <th scope="row" hidden>{{row.dealId}}</th>
             <td>{{row.name}}</td>
-            <td>{{row.currentPrice}}</td>
+            <td>{{row.currentPrice}}ש"ח</td>
             <td></td>
-            <td>{{row.dueDate}}</td>
+            <td>תאריך סגירה:{{row.dueDate | date:'dd/MM/yyyy'}}</td>
             
           </tr>
         </tbody>
@@ -29,4 +21,5 @@
       <p *ngIf="item.length == 0 && i ==0" class="msg">אין פריטים שאהבתי</p>
     <p *ngIf="item.length == 0 && i ==1 && isBuyer" class="msg">אין פריטים שהצטרפתי</p>
     <p *ngIf="item.length == 0 && i ==2 && isSupplier" class="msg">אין פריטים שהגשתי להם הצעת מחיר</p>
+    <p *ngIf="item.length == 0 && i ==3" class="msg">אין התראות</p>
 </div>

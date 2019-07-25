@@ -31,14 +31,14 @@
       </div>
       <div class="notifications" *ngIf="showNotification">
         <form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <input type="number" min="0" max="{{deal.currentPrice}}" formControlName="price" class="form-control" placeholder="עדכן כשמחיר המוצר נמוך מ:" />
+          <div *ngIf="isBuyer" class="form-group">
+            <input type="number" min="0" max="{{deal.currentPrice}}" formControlName="price" class="form-control" placeholder=":עדכן כשמחיר המוצר נמוך מ  " />
           </div>
           <div class="form-group">
-            <input type="number" min="1" max="5" formControlName="date" class="form-control" placeholder="עדכן כשהדיל מסתיים בעוד X ימים:" />
+            <input type="number" min="1" max="5" formControlName="date" class="form-control" placeholder=":עדכן כשהדיל מסתיים בעוד _ ימים  " />
           </div>
           <div class="form-group">
-            <input type="number" min="{{deal.inCount}}" max="10000" formControlName="memebers" class="form-control" placeholder="עדכן כשכמות המשתתפים עולה על:" />
+            <input *ngIf="isSupplier" type="number" min="{{deal.inCount}}" max="10000" formControlName="memebers" class="form-control" placeholder=":עדכן כשכמות המשתתפים עולה על  " />
           </div>
           <div class="form-group">
               <button class="btn btn-primary">אישור</button>

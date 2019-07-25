@@ -45,7 +45,7 @@ export class DealComponent extends BaseDealComponent implements OnInit {
       dealId: this.deal.dealId,
       userId: this.currentUser.userId,
       price: this.notificationForm.controls.price.value==""?null: parseInt(this.notificationForm.controls.price.value),
-      memebers: this.notificationForm.controls.memebers.value==""?null:parseInt(this.notificationForm.controls.memebers.value),
+      members: this.notificationForm.controls.memebers.value==""?null:parseInt(this.notificationForm.controls.memebers.value),
       days: this.notificationForm.controls.date.value==""?null:parseInt(this.notificationForm.controls.date.value)
     };
 
