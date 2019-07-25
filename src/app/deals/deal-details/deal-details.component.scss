@@ -158,7 +158,11 @@ img {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
-            ::ng-deep .card img {
-              
-              height: 280px !important;
-          }
+::ng-deep .card img {
+    height: 310px;
+    width: 450px;
+}
+
+::ng-deep .ui-galleria-caption{
+  display: none !important;
+}

@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BaseComponent } from './base/base.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { DealResolve } from './Services/DealResolve.service';
+// import { GeneralModalComponent } from './general/general-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DealResolve],
+  bootstrap: [AppComponent],
+  // entryComponents: [GeneralModalComponent]
 })
 export class AppModule { }

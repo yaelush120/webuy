@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Deal } from "src/app/Entities/Deal";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, RouterStateSnapshot } from "@angular/router";
 import { DALService } from "src/app/Services/DAL.service";
 import { extend } from "webdriver-js-extender";
 import { BaseComponent } from "src/app/base/base.component";
 import { AuthenticationService } from "src/app/Services/authentication.service.";
 import { $ } from "protractor";
 import { BaseDealComponent } from "src/app/base/base-deal.component";
+import { state } from '@angular/animations';
 
 @Component({
   selector: "app-deal-details",
@@ -19,6 +20,7 @@ export class DealDetailsComponent extends BaseDealComponent {
     private dataLayer: DALService,
     private activatedRoute: ActivatedRoute,
     private router: Router
+    //,private state: RouterStateSnapshot
   ) {
     super(authS, dataLayer);
   }
@@ -47,10 +49,14 @@ export class DealDetailsComponent extends BaseDealComponent {
         this.deal = res;
 
         this.images = [];
-        this.images.push({ source: this.basePath + this.deal.img1 });
-        this.images.push({ source: this.basePath + this.deal.img2 });
-        this.images.push({ source: this.basePath + this.deal.img3 });
-        this.images.push({ source: this.basePath + this.deal.img4 });
+        if(this.deal.img1!=null)
+          this.images.push({ source: this.basePath + this.deal.img1 });
+        if(this.deal.img2!=null)
+          this.images.push({ source: this.basePath + this.deal.img2 });
+        if(this.deal.img3!=null)
+          this.images.push({ source: this.basePath + this.deal.img3 });
+        if(this.deal.img4!=null)
+          this.images.push({ source: this.basePath + this.deal.img4 });
 
        
 
@@ -102,9 +108,8 @@ export class DealDetailsComponent extends BaseDealComponent {
   }
 
   login() {
-    this.router.navigate(["/authentication/login"], {
-      queryParams: { returnUrl: "../../../" }
-    });
+    // this.router.navigate(['/authentication/login'], { queryParams: { returnUrl: state.url}});
+    this.router.navigate(["/authentication/login"], { queryParams: { returnUrl: "../../../" } });
   }
 
   getTimeLeft(countDownDate) {

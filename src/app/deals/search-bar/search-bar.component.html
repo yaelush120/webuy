@@ -1,0 +1,41 @@
+<nav>
+      <ul class="container ul-reset">
+            <li class='droppable' *ngFor="let category of this.categories">
+                  <a (click)="searchByCategory(category.categoryId)">
+                        {{category.name}}</a>
+                  <div class='mega-menu'>
+                        <div class="container cf">
+                              <ul class="ul-reset" *ngFor="let sub1 of category.subMenu">
+                                    <h4><a (click)="searchByCategory(sub1.categoryId)">{{sub1.name}}</a></h4>
+                                    <li *ngFor="let sub2 of sub1.subMenu">
+                                          <a (click)="searchByCategory(sub2.categoryId)">{{sub2.name}}</a>
+                                    </li>
+                              </ul>
+                        </div>
+                  </div>
+            </li>
+      </ul>
+</nav>
+
+<div class="filter">
+
+      <input [(ngModel)]="freeTxt" class="filter-item free_text" type="text" placeholder="טקסט חופשי"
+            (keyup)="searchByTxt($event.target.value)">
+
+      <p-calendar class="filter-item range_date" [(ngModel)]="rangeDates" selectionMode="range" [inputId]="dateTxt"
+            [readonlyInput]="true" (onClose)="searchBydueDateRange()" placeholder="טווח תאריכים" [monthNavigator]="true"
+            [showButtonBar]="true"></p-calendar>
+
+      <div class="range_price filter-item">
+            <span class="max_price"><span class="bold">{{rangeValues[1]}}</span>שח</span>
+            <p-slider [(ngModel)]="rangeValues" style="display: inline-block;" [style]="{'width':'16em'}"
+                  [animate]="true" [range]="true" [step]="10" [max]="this.maxPrice" (onChange)="searchByPriceRange($event)">
+            </p-slider>
+            <span class="min_price"><span class="bold">{{rangeValues[0]}}</span>שח</span>
+      </div>
+
+      <span class="filter-item">({{this.totalItems}}פריטים )</span>
+
+      <a class="filter-item clear" (click)="cleanSearch()">נקה</a><br>
+      
+</div>

@@ -1,4 +1,6 @@
-<div class="add-icon" *ngIf="isBuyer"><a [routerLink]="['../new-deal']" title="הוסף קבוצה"><img src="/assets/images/plus.svg"></a></div>
+<app-search-bar></app-search-bar>
+<div class="add-icon" *ngIf="isBuyer"><a [routerLink]="['../new-deal']" title="הוסף קבוצה"><img
+            src="/assets/images/plus.svg"></a></div>
 <div class='row'>
     <div class='col-lg-4 botm-margn mb-4' *ngFor="let d of data">
         <app-deal [deal]="d"></app-deal>

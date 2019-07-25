@@ -113,3 +113,43 @@ nav > ul > li:hover > a {
    display: table; /* 2 */
 }
 .cf:after {clear: both;}
+
+.filter{
+	direction: rtl;
+	text-align: right;
+	background-color: #d8e6e5;
+	margin-bottom: 10px;
+
+	.filter-item{
+		margin-left: 50px;
+	}
+
+	.clear{
+		color: #007ad9;
+		font-weight: bold;
+	}
+
+	.range_price{
+		display: inline-block;
+		.bold{
+			font-weight: bold;
+		}
+	}
+
+	.free_text{
+		width: 200px;
+	}
+
+	.max_price{
+		margin-left:10px;
+	}
+
+	.min_price{
+		margin-right:10px;
+	}
+}
+
+::ng-deep .range_date input{
+
+	padding-bottom: 0px;
+}

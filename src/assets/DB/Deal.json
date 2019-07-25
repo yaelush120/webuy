@@ -1,0 +1,32 @@
+{
+    "results": [
+        {
+            "dealId": "03c16a7a04254a30afaad9c5881900a6",
+            "name": " אוניברסיטה + משטח משחק",
+            "description":" אוניברסיטה + משטח משחק חיות הג'ונגל של חברת ווינפאן WINFUN",
+            "dueDate":"2019-01-01",
+            "startPrice":140,
+            "category1":2,
+            "category2":8,
+            "category3":32,
+            "img1":"oni1.jpg",
+            "img2":"oni2.jpg",
+            "img3":"oni3.jpg",
+            "img4":null
+        },
+        {
+            "dealId": "131bfe58914a431f8e9e894e4346bec3",
+            "name": "מעבד מזון סאוטר Sauter",
+            "description":"מעבד מזון Sauter עם 2 מהירויות ומצב פולסים",
+            "dueDate":"2019-08-17",
+            "startPrice":500,
+            "category1":1,
+            "category2":5,
+            "category3":16,
+            "img1":"sauter1.jpg",
+            "img2":"sauter2.jpg",
+            "img3":null,
+            "img4":null
+        }
+    ]
+}
