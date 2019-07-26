@@ -95,5 +95,7 @@ export class SearchBarComponent implements OnInit {
     this.freeTxt = "";
     this.rangeDates = null;
     this.rangeValues = [0, this.maxPrice];
+
+    //this.totalItems=this.dal.getAllDealsList().length;
   }
 }

@@ -8,6 +8,7 @@ import { BaseComponent } from './base/base.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DealResolve } from './Services/DealResolve.service';
+import {ToastModule} from 'primeng/toast';
 // import { GeneralModalComponent } from './general/general-modal.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { DealResolve } from './Services/DealResolve.service';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [DealResolve],

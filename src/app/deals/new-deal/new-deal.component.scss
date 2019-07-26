@@ -1,0 +1,33 @@
+.addForm{
+    direction: rtl;
+}
+.form-group {
+    select{
+        margin-left: 15px;
+        width: 132px;
+    }
+    input{
+        margin-bottom: 0px !important;
+    }
+    input.dueDate{
+        margin-bottom:15px !important;
+    }
+    margin-bottom: 0px !important;
+}
+.form-group.top{
+    margin-top:15px !important;
+}
+.jumbotron{
+    padding-top: 10px !important;
+
+}
+.addTitle{
+    margin-bottom: 0px;
+}
+.ui-button{
+    background-color: #2BBBAD !important;
+}
+h3{
+    text-shadow: 2px 2px #6186825e;
+
+}

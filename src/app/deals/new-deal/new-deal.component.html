@@ -2,41 +2,56 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h3>הוספת דיל</h3>
-        <form [formGroup]="createDealForm" (ngSubmit)="onSubmit()">
+        <h3 class="addTitle">הוספת דיל</h3>
+        <form class="addForm" [formGroup]="createDealForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="name">שם מוצר</label>
-            <input type="text" formControlName="name" class="form-control"
+            
+            <input placeholder="שם מוצר" type="text" formControlName="name" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
             <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
               <div *ngIf="f.name.errors.required">חובה להזין שם מוצר</div>
             </div>
           </div>
           <div class="form-group">
-            <label for="description">תאור מוצר</label>
-            <input type="text" formControlName="description" class="form-control"
+           
+            <input placeholder="תאור מוצר" type="text" formControlName="description" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
             <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
               <div *ngIf="f.description.errors.required">חובה להזין תאור מוצר</div>
             </div>
           </div>
           <div class="form-group">
-            <label for="startPrice">מחיר התחלתי</label>
-            <input type="text" formControlName="startPrice" class="form-control"
+            
+            <input placeholder="מחיר התחלתי" type="text" formControlName="startPrice" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.startPrice.errors }" />
             <div *ngIf="submitted && f.startPrice.errors" class="invalid-feedback">
               <div *ngIf="f.startPrice.errors.required">חובה להזין מחיר התחלתי</div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="dueDate">תאריך סיום</label>
-            <input type="text" formControlName="dueDate" class="form-control"
+          <div class="form-group ">
+           
+            <input placeholder="תאריך סיום" type="text" formControlName="dueDate" class="dueDate form-control"
               [ngClass]="{ 'is-invalid': submitted && f.dueDate.errors }" />
             <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
               <div *ngIf="f.dueDate.errors.required">תאריך סיום</div>
             </div>
           </div>
           <div class="form-group">
+              <select (change)="onSelect1($event.target)" formControlName="category1">
+                  <option value="0">--בחר--</option>
+                  <option *ngFor="let c1 of Categories1" [ngValue]="c1">{{c1.name}}</option>
+                </select>
+                <select (change)="onSelect2($event.target)" formControlName="category2">
+                    <option value="0">--בחר--</option>
+                    <option *ngFor="let c2 of Categories2" [ngValue]="c2">{{c2.name}}</option>
+                  </select>
+                  <select formControlName="category3">
+                      <option value="0">--בחר--</option>
+                      <option *ngFor="let c3 of Categories3" [ngValue]="c3">{{c3.name}}</option>
+                    </select>
+
+          </div>
+          <!-- <div class="form-group">
             <label>קטגוריה 1</label>
             <select (change)="onSelect1($event.target)" formControlName="category1">
               <option value="0">--בחר--</option>
@@ -55,10 +70,9 @@
             <select formControlName="category3">
               <option value="0">--בחר--</option>
               <option *ngFor="let c3 of Categories3" [ngValue]="c3">{{c3.name}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>העלאת תמונות</label>
+            </select> 
+          </div>-->
+          <div class="form-group top">
             <p-fileUpload customUpload="true" (uploadHandler)="uploadFile($event)"
                         multiple="multiple" accept="image/*" [auto]="true">
                       </p-fileUpload>
@@ -66,7 +80,7 @@
                       <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
           </div>
           <div class="form-group">
-            <button class="btn btn-primary">צור קבוצה</button>
+            <button class="btn btn-default">צור קבוצה</button>
           </div>
         </form>
       </div>

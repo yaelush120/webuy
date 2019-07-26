@@ -24,13 +24,13 @@ export class DealDetailsComponent extends BaseDealComponent {
   ) {
     super(authS, dataLayer);
   }
-
+  show=false;
   bidHistory: [];
   deal: any;
   images: any[];
   btnPriceText = "הצעת מחיר";
   showPrice = false;
-  priceTxt = 0;
+  priceTxt :number;
   maxPrice: number;
   timeLeft="aaaa";
   currentPrice: number;

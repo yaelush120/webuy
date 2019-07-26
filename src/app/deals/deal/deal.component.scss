@@ -1,12 +1,17 @@
 .btn-more-details {
 	font-weight:bold;
-	font-size: 15.5px;
-	border: 1px dotted white;
+	font-size: 12px;
+	margin:0px;
+	padding:0px;
+	width: 100px;
+	height: 30px;
+	padding-top: 5px;
+		border: 1px dotted white;
 	border-radius: 20px;
 }
 
 span.price{
-	font-size: 25px;
+	font-size: 20px;
     font-weight: bold;
 }
 
@@ -30,7 +35,7 @@ margin-bottom: 10px;
 	padding: 0px;
 	position: relative;
 	overflow: hidden;
-	height: 300px;
+	height: 200px;
 	border: 2px dotted #5bc3bd;
 }
 .transperent_block img {
@@ -50,7 +55,7 @@ width:100%;
 }
 .transperent_block .black_hover_block {
 	position: absolute;
-	bottom: 20%;
+	bottom: 6%;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -75,7 +80,7 @@ width:100%;
 	position: absolute;
 	height: 400px;
 	text-align: center;
-	top: -50px;
+	top: 18px;
 	width: 100%;
 	
 }
@@ -89,7 +94,7 @@ span.fa-clock{
 }
 
 .black_hover_block_text i {
-    padding: 10px 10px;
+    padding: 5px 5px;
     font-size: 18px;
     color: #fff;
 }
@@ -109,7 +114,8 @@ color:#ffffffa6}
 	padding-bottom: 5px;
 	background: #1d7fe4cc;
 	margin-bottom: 0px;
-
+	font-size: 15px;
+font-weight: bold;
 	white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -140,8 +146,9 @@ color: #fff;
 }
 
 .black_hover_block_text p {
-	font-size: 20px;
-	margin:20px;
+	font-size: 15px;
+	margin:10px;
+	margin-top: 5px;
 	border: none !important;
 	
 	display: -webkit-box;
@@ -149,13 +156,19 @@ color: #fff;
     overflow: hidden;
 }
 
+.pad0 span{
+	color:white;
+	font-size: 12px;
+}
+
 .notifications{
 	input{
 		background-color: white;
 		text-align: right;
-		height: 15px;
-		margin-left: 20px;
-		width: 305px;
+		margin-left: 10px;
+		width: 205px;
+    height: 10px;
+    font-size: 12px;
 	}
 	button{
 		border-radius: 20px;

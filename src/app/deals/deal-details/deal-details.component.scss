@@ -1,8 +1,6 @@
 img {
   max-width: 100%; }
-.bidHistory{
-  padding: 15px !important;
-}
+
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
@@ -48,7 +46,7 @@ img {
             animation-duration: .3s; }
 
 .card {
-  margin-top: 50px;
+  margin-top: 15px;
   background: #eee;
   padding: 3em;
   line-height: 1.5em; }
@@ -61,6 +59,7 @@ img {
     display: flex; } }
 
 .details {
+  text-align:right;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,14 +80,15 @@ img {
   text-transform: UPPERCASE;
   font-weight: bold; }
 
-.checked, .price span {
-  color: #b53434; }
+  span.price {
+  color: #0a8c7f; }
 
 .product-title, .rating, .product-description, .price, .vote, .sizes {
-  margin-bottom: 15px; }
+  margin-bottom: 10px; }
 
 .product-title {
-  margin-top: 0; }
+  margin-top: 0;
+  text-shadow: 2px 2px #6186825e; }
 
 .size {
   margin-right: 10px; }
@@ -165,4 +165,53 @@ img {
 
 ::ng-deep .ui-galleria-caption{
   display: none !important;
+}
+
+.fa-shekel-sign
+{
+  font-size: 15px;
+}
+
+.start_price
+{
+  margin-bottom: 10px;
+  .price{
+    text-decoration: line-through;
+  }
+} 
+.current_price{
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.details{
+  font-size: 17px;
+}
+
+.bidHistory{
+  padding: 0px;
+  font-size: 12px;
+  width: 530px;
+
+  .bid_name{
+    width: 150px;
+  }
+
+  .bid_price{
+    width: 50px;
+  }
+
+  .bid_date{
+    width: 300px;
+  }
+  .history{
+    margin-bottom: 10px;
+  }
+  
+}
+
+::ng-deep .alert-danger{
+  margin-right: 5px;
+  font-size: 10px !important;
+  padding: 10px 5px 10px 5px !important;
 }

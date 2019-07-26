@@ -11,6 +11,13 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    .ui-button{
+      background-color: #5adace !important;
+      border:0px !important;
+  }
+  .ui-button:hover{
+    background-color: #2BBBAD !important;
+  }
   }
 
   html {box-sizing: border-box;}

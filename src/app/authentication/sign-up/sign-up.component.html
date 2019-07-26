@@ -5,9 +5,9 @@
                 <h3>משתמש חדש</h3>
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                        <label for="type">בחר סוג משתמש</label>
-                        +<p-selectButton [options]="types" formControlName="type"></p-selectButton>
-                        <p>Selected Type: <span style="font-weight: bold">{{f.type.value}}</span></p>
+                        <div><label for="type">בחר סוג משתמש</label></div>
+                        <p-selectButton [options]="types" formControlName="type"></p-selectButton>
+                        <!-- <p>Selected Type: <span style="font-weight: bold">{{f.type.value}}</span></p> -->
                         <div *ngIf="submitted && f.type.value==''" class="invalid-feedback">
                             <div *ngIf="f.type.value==''">חובה לבחור סוג משתמש</div>
                         </div>

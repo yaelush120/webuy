@@ -15,9 +15,11 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 })
 export class DealComponent extends BaseDealComponent implements OnInit {
   curDate;
+  timeOver:boolean;
   @Input() deal: any;
   showNotification: boolean;
   notificationForm: FormGroup;
+   hrefLink:string;
 
   constructor(
     private authS: AuthenticationService,
@@ -37,6 +39,13 @@ export class DealComponent extends BaseDealComponent implements OnInit {
 
   ngOnInit() {
     this.curDate = Date.now();
+    var now = new Date().getTime();
+    var distance = new Date(this.deal.dueDate).getTime() - now;
+    this.timeOver = distance > 0 ;
+    if(this.currentUser != null)
+      // this.hrefLink ="https://api.whatsapp.com/send?phone=972"+this.currentUser.phone+"&text=webuy";
+      var curentUrl ="מצאתי דיל שיכול לעניין אותך";
+        this.hrefLink ="https://web.whatsapp.com/send?text=" + curentUrl + this.deal.description+ "http://localhost:4200/dashboard/deals/deal-details/"+this.deal.dealId;
   }
 
   //notification

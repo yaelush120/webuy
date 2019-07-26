@@ -7,26 +7,48 @@
       <div class="details col-md-6">
         <h3 class="product-title">{{deal.name}}</h3>
         <p class="product-description">{{deal.description}}</p>
-        <h4 class="price">מחיר נוכחי: 
-            <i class="fas fa-shekel-sign"></i><span>{{deal.currentPrice}}</span></h4>
-        <details>
-          <summary>הצעות קודמות</summary>
-          <div *ngFor="let bid of bidHistory">
-            <span class="bidHistory">{{bid.companyName}}</span>
-            <span class="bidHistory">{{bid.price}}</span>
-            <span class="bidHistory">{{bid.date | date: 'dd/MM/yyyy-HH:mm:ss'}}</span>
-          </div>
-        </details>
+        
+        
+        <h4 class="current_price">
+            <i class="fas fa-shekel-sign"></i>
+            <span> מחיר נוכחי: </span>  
+            <span class="price">{{deal.currentPrice}}</span>
+            
+          </h4>
+        
+        <div class="start_price">
+            <i class="fas fa-shekel-sign"></i>
+         <span> מחיר התחלתי: </span>
+          <span class="price">{{deal.startPrice}}</span>
+        </div>
 
-        <h4 class="price">מחיר התחלתי:
-          <i class="fas fa-shekel-sign"></i><span>{{deal.startPrice}}</span>
-        </h4>
         <p class="vote">
           חברים משתתפים ברכישה זו
           <strong>{{deal.inCount}}</strong>
         </p>
+
         <!-- <h4 class="price">הדיל יסגר בעוד: <span id="timeLeft"></span></h4> -->
-        <h4 class="price">הדיל יסגר בעוד: <span>{{this.deal.dueDate}}</span></h4> 
+        <div class="price">הדיל יסגר בתאריך: <span>{{this.deal.dueDate| date: 'dd/MM/yyyy'}}</span></div> 
+
+        <!-- <details>
+            <summary>הצעות קודמות</summary> -->
+            <!-- <div class="history">
+              <a (click)="show = !show">
+                <i class="fa fa-history" aria-hidden="true"></i>
+                <span> היסטורית מחירים </span></a>
+                
+              </div> -->
+              <!-- <div class="bidHistory" *ngFor="let bid of bidHistory">
+                <span class="bidHistory bid_name">{{bid.companyName}}</span>
+                <span class="bidHistory bid_date">{{bid.date | date: 'dd/MM/yyyy-HH:mm'}}</span>
+                <span class="bidHistory bid_price">{{bid.price}}</span>
+                
+              </div> -->
+
+           
+            
+          <!-- </details> -->
+
         <div class="action">
           
           <button *ngIf="isBuyer" class="add-to-cart btn btn-default" type="button"
@@ -42,10 +64,19 @@
 
           <button *ngIf="isConnected" class="like btn btn-default" type="button"
             (click)="AddUserToDeal('like',deal.dealId);"><span class="fa fa-heart"></span></button>
+            <button (click)="show = !show" class="like btn btn-default" type="button"><i class="fa fa-history" aria-hidden="true"></i></button>
 
           <button *ngIf="isUnConnected" class="like btn btn-default" type="button" (click)="login();"><span
               class="fa fa-sign-in"></span>התחבר כדי להשתתף בדיל</button>
         </div>
+        <table [hidden]="!show">
+            <tr class="bidHistory" *ngFor="let bid of bidHistory">
+                
+                <td class="bid_date">{{bid.date | date: 'dd/MM/yyyy-HH:mm'}}</td>
+                <td class="bid_price">{{bid.price}}</td>
+                <td class="bid_name">{{bid.companyName}}</td>
+            </tr>
+          </table>
       </div>
     </div>
   </div>
