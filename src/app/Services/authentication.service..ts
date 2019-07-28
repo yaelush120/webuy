@@ -6,21 +6,22 @@ import { User } from "../Entities/User";
 
 @Injectable({ providedIn: "root" })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<AnimationPlayState>;
+  public currentUser: Observable<any>;
 
   private _options = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(localStorage.getItem("currentUser"))
+    this.currentUserSubject = new BehaviorSubject<any>(
+      //JSON.parse(localStorage.getItem("currentUser"))
+      null
     );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
 
@@ -32,7 +33,7 @@ export class AuthenticationService {
         );
         if (user && user.length > 0) {
           user = user[0];
-          localStorage.setItem("currentUser", JSON.stringify(user));
+          //localStorage.setItem("currentUser", JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
 
@@ -43,7 +44,7 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem("currentUser");
+    //localStorage.removeItem("currentUser");
     this.currentUserSubject.next(null);
   }
 

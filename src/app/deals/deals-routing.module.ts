@@ -10,7 +10,7 @@ import { AuthGuard } from '../Services/auth.guard';
 const routes: Routes = [
  {path:'new-deal',component:NewDealComponent, canActivate: [AuthGuard]},
  {path:'deal-list',component:DealListComponent,resolve:{dealData:DealResolve}},
- {path:'deal-details/:id',component:DealDetailsComponent},
+ {path:'deal-details/:id',component:DealDetailsComponent,resolve:{dealData:DealResolve}},
  {path:'my-deals',component:MyDealsComponent, canActivate: [AuthGuard]},
  {path:'',redirectTo:'deal-list',pathMatch:'full'},
 

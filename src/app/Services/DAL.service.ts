@@ -28,6 +28,14 @@ export class DALService {
   getAllDealsList() {
     return this.allDeals.getValue();
   }
+
+  getDealsListExist() {
+    //return this.allDeals.getValue().length;
+    if(this.allDeals.getValue().length!=undefined &&this.allDeals.getValue().length>0)
+      return true;
+    return false;
+  }
+
   setAllDealsList(list:any) {
     this.allDeals.next(list);
   }
@@ -43,6 +51,15 @@ export class DALService {
     .then(res => res = <any[]>res)
 
     return allDeal;
+  }
+
+  getNewDeals(lastSignIn)
+  {
+    var newDeals=  this.http.get<any>("http://localhost:54267/api/Deal/GetNewDeals?lastSignIn="+lastSignIn)
+    .toPromise()
+    .then(res => res = <any[]>res)
+
+    return newDeals;
   }
 
   GetUserPersonalDeals(userId)

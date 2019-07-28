@@ -7,8 +7,8 @@ import { BaseComponent } from "src/app/base/base.component";
 import { AuthenticationService } from "src/app/Services/authentication.service.";
 import { $ } from "protractor";
 import { BaseDealComponent } from "src/app/base/base-deal.component";
-import { state } from '@angular/animations';
-import { MessageService } from 'primeng/api';
+import { state } from "@angular/animations";
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: "app-deal-details",
@@ -23,45 +23,46 @@ export class DealDetailsComponent extends BaseDealComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private msgService: MessageService
-    //,private state: RouterStateSnapshot
-  ) {
-    super(authS, dataLayer,msgService);
+  ) //,private state: RouterStateSnapshot
+  {
+    super(authS, dataLayer, msgService);
   }
-  show=false;
+  show = false;
   bidHistory: [];
   deal: any;
   images: any[];
   btnPriceText = "הצעת מחיר";
   showPrice = false;
-  priceTxt :number;
+  priceTxt: number;
   maxPrice: number;
-  timeLeft="aaaa";
+  timeLeft = "aaaa";
   currentPrice: number;
-  timerInterval:any;
-  basePath="/assets/saveImg/";
+  timerInterval: any;
+  basePath = "/assets/saveImg/";
 
   ngOnInit() {
     this.getData();
   }
 
   getData() {
-    this.dataLayer
-      .getDeal(this.activatedRoute.snapshot.paramMap.get("id"))
-      .then(res => {
+    this.deal = this.dataLayer.getAllDealsList().filter(x => {
+      return x.dealId == this.activatedRoute.snapshot.paramMap.get("id");
+    })[0];
 
-        this.deal = res;
+    // this.dataLayer
+    //   .getDeal(this.activatedRoute.snapshot.paramMap.get("id"))
+    //   .then(res => {
+    //    this.deal = res;
 
         this.images = [];
-        if(this.deal.img1!=null)
+        if (this.deal.img1 != null)
           this.images.push({ source: this.basePath + this.deal.img1 });
-        if(this.deal.img2!=null)
+        if (this.deal.img2 != null)
           this.images.push({ source: this.basePath + this.deal.img2 });
-        if(this.deal.img3!=null)
+        if (this.deal.img3 != null)
           this.images.push({ source: this.basePath + this.deal.img3 });
-        if(this.deal.img4!=null)
+        if (this.deal.img4 != null)
           this.images.push({ source: this.basePath + this.deal.img4 });
-
-       
 
         this.bidHistory = this.dataLayer
           .GetBidHistory(this.activatedRoute.snapshot.paramMap.get("id"))
@@ -75,11 +76,10 @@ export class DealDetailsComponent extends BaseDealComponent {
           });
 
         this.getTimeLeft(this.deal.dueDate);
-      });
+      //});
   }
 
-  onDestroy()
-  {
+  onDestroy() {
     clearInterval(this.timerInterval);
   }
 
@@ -95,7 +95,7 @@ export class DealDetailsComponent extends BaseDealComponent {
       this.dataLayer.AddBid(dealId, userId, this.priceTxt).then(x => {
         if (x == true) {
           //Add Notification
-          this.dataLayer.pushNotification(dealId,'price',this.priceTxt);
+          this.dataLayer.pushNotification(dealId, "price", this.priceTxt);
 
           this.msgService.add({
             severity: "success",
@@ -107,7 +107,6 @@ export class DealDetailsComponent extends BaseDealComponent {
           this.getData();
         }
         if (x == false) {
-
           this.msgService.add({
             severity: "error",
             summary: "אירעה שגיאה!",
@@ -122,7 +121,9 @@ export class DealDetailsComponent extends BaseDealComponent {
 
   login() {
     // this.router.navigate(['/authentication/login'], { queryParams: { returnUrl: state.url}});
-    this.router.navigate(["/authentication/login"], { queryParams: { returnUrl: "../../../" } });
+    this.router.navigate(["/authentication/login"], {
+      queryParams: { returnUrl: document.location.pathname }
+    });
   }
 
   getTimeLeft(countDownDate) {
@@ -149,7 +150,7 @@ export class DealDetailsComponent extends BaseDealComponent {
 
         // Display the result in the element with id="demo"
         //document.getElementById('timeLeft').innerHTML =
-         // days + "ימים " + hours + ":" + minutes + ":" + seconds;
+        // days + "ימים " + hours + ":" + minutes + ":" + seconds;
 
         // If the count down is finished, write some text
         if (distance < 0) {
