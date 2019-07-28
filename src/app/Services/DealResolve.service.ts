@@ -14,7 +14,13 @@ export class DealResolve implements Resolve<any> {
           localStorage.setItem("lastSignIn", this.getNowDateFormat());
           if (y.length > 0) {
             var allDeals = this.dal.getAllDealsList();
-            allDeals.push(y);
+            // for(let i=0;i<y.length;i++)
+            // {
+            //   allDeals.insert(i,y[i]);
+            // }
+            y.forEach(element => {
+              allDeals.unshift(element);
+            });
             this.dal.setAllDealsList(allDeals);
             this.dal.setAllFilterDealsList(allDeals);
           }

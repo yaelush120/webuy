@@ -4,10 +4,11 @@ import { DealListComponent } from './deals/deal-list/deal-list.component';
 import { DealComponent } from './deals/deal/deal.component';
 import { DealDetailsComponent } from './deals/deal-details/deal-details.component';
 import { NewDealComponent } from './deals/new-deal/new-deal.component';
+import { DealResolve } from './Services/DealResolve.service';
 
 const routes: Routes = [
   {path:'authentication',loadChildren:'./authentication/authentication.module#AuthenticationModule'},
-  {path:'dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule'},
+  {path:'dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule',resolve:{dealData:DealResolve}},
   {path:'',redirectTo:'dashboard',pathMatch:'full'}
 ];
 
