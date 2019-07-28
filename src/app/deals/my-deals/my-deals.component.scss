@@ -10,6 +10,7 @@
     text-align: right;
     margin-top: 20px;
     padding-right: 20px;
+    font-size: 25px;
 }
 .msg{
     text-align: right;
@@ -18,4 +19,12 @@
 }
 table.table td{
     padding: 10px !important;
+
+    img{
+        width: 35px;
+    }
+}
+
+h1 i{
+    font-size: 20px;
 }

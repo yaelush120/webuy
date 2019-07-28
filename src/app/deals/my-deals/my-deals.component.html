@@ -1,25 +1,43 @@
 <div *ngFor="let item of tableSource;let i = index">
 
-    <h1 class="title" *ngIf="i ==0 && isBuyer">פריטים שאהבתי</h1>
-    <h1 class="title" *ngIf="i ==0 && isSupplier">פריטים שעקבתי אחריהם</h1>
-    <h1 class="title" *ngIf="i ==1 && isBuyer">פריטים שהצטרפתי</h1>
-    <h1 class="title" *ngIf="i ==2 && isSupplier">פריטים שהגשתי להם הצעת מחיר</h1>
-    <h1 class="title" *ngIf="i ==3">התראות</h1>
+    <h1 class="title" *ngIf="i ==3 && isBuyer">
+      <i class="fas fa-heart"></i>
+      פריטים שאהבתי
+    </h1>
+    <h1 class="title" *ngIf="i ==3 && isSupplier">
+      <i class="fas fa-search"></i>
+      פריטים שעקבתי אחריהם
+    </h1>
+    <h1 class="title" *ngIf="i ==1 && isBuyer">
+      <i class="fas fa-cart-arrow-down"></i>
+      פריטים שהצטרפתי
+    </h1>
+    <h1 class="title" *ngIf="i ==2 && isSupplier">
+      <i class="fas fa-shekel-sign"></i>
+      פריטים שהגשתי להם הצעת מחיר
+    </h1>
+    <h1 class="title" *ngIf="i ==0">
+      <i class="fas fa-bell" aria-hidden="true"></i>
+      התראות
+    </h1>
+
     <table class="table table-hover" *ngIf="item.length">
         <tbody>
 
           <tr *ngFor="let row of item" (dblclick)="openDeal(row.dealId)">
             <th scope="row" hidden>{{row.dealId}}</th>
-            <td>{{row.name}}</td>
+            <td><img src="/assets/saveImg/{{row.img1}}"></td>
+            <td style="width: 450px">{{row.name}}</td>
             <td>{{row.currentPrice}}ש"ח</td>
             <td></td>
             <td>תאריך סגירה:{{row.dueDate | date:'dd/MM/yyyy'}}</td>
+            <td style="width: 200px">{{row.description}}</td>
             
           </tr>
         </tbody>
       </table>
-      <p *ngIf="item.length == 0 && i ==0" class="msg">אין פריטים שאהבתי</p>
+      <p *ngIf="item.length == 0 && i ==3" class="msg">אין פריטים שאהבתי</p>
     <p *ngIf="item.length == 0 && i ==1 && isBuyer" class="msg">אין פריטים שהצטרפתי</p>
     <p *ngIf="item.length == 0 && i ==2 && isSupplier" class="msg">אין פריטים שהגשתי להם הצעת מחיר</p>
-    <p *ngIf="item.length == 0 && i ==3" class="msg">אין התראות</p>
+    <p *ngIf="item.length == 0 && i ==0" class="msg">אין התראות</p>
 </div>

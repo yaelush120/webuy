@@ -8,13 +8,14 @@ import { BaseComponent } from './base/base.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DealResolve } from './Services/DealResolve.service';
-import {ToastModule} from 'primeng/toast';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 // import { GeneralModalComponent } from './general/general-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaseComponent
+    BaseComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,6 @@ import {ToastModule} from 'primeng/toast';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [DealResolve],

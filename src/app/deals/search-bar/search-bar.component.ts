@@ -17,9 +17,8 @@ export class SearchBarComponent implements OnInit {
   totalItems:number;
 
   constructor(private dal: DALService) {
-    
-    this.maxPrice = this.dal.getAllDealsList().sort((a, b) => (a.currentPrice < b.currentPrice ? 1 : -1))[0].currentPrice;
-    this.rangeValues = [0, this.maxPrice];
+    this.maxPrice=Math.max.apply(Math, this.dal.getAllDealsList().map(function(o) { return o.currentPrice; }));
+    this.rangeValues = [0, this.maxPrice+1];
     this.totalItems=this.dal.getAllDealsList().length;
   }
 
@@ -96,6 +95,6 @@ export class SearchBarComponent implements OnInit {
     this.rangeDates = null;
     this.rangeValues = [0, this.maxPrice];
 
-    //this.totalItems=this.dal.getAllDealsList().length;
+    this.totalItems=this.dal.getAllDealsList().length;
   }
 }

@@ -1,3 +1,4 @@
+<p-toast position="center"></p-toast>
 <div class="card" *ngIf="deal && bidHistory">
   <div class="container-fliud">
     <div class="wrapper row">
@@ -52,7 +53,7 @@
         <div class="action">
           
           <button *ngIf="isBuyer" class="add-to-cart btn btn-default" type="button"
-            (click)="AddUserToDeal('addMe',deal.dealId);">צרף אותי לקבוצה</button>
+            (click)="AddUserToDeal('addMe',deal);">צרף אותי לקבוצה</button>
 
             <span *ngIf="priceTxt > maxPrice" class="alert alert-danger">המחיר המקסימלי הוא {{maxPrice}}</span>
 
@@ -63,7 +64,7 @@
             (click)="AddBid();">{{this.btnPriceText}}</button>
 
           <button *ngIf="isConnected" class="like btn btn-default" type="button"
-            (click)="AddUserToDeal('like',deal.dealId);"><span class="fa fa-heart"></span></button>
+            (click)="AddUserToDeal('like',deal);"><span class="fa fa-heart"></span></button>
             <button (click)="show = !show" class="like btn btn-default" type="button"><i class="fa fa-history" aria-hidden="true"></i></button>
 
           <button *ngIf="isUnConnected" class="like btn btn-default" type="button" (click)="login();"><span

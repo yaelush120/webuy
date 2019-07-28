@@ -3,39 +3,55 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DateValidator } from "src/app/general/Date.validator";
 import { DALService } from "src/app/Services/DAL.service";
 import { Router } from "@angular/router";
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: "app-new-deal",
   templateUrl: "./new-deal.component.html",
-  styleUrls: ["./new-deal.component.scss"]
+  styleUrls: ["./new-deal.component.scss"],
+  providers: [MessageService]
 })
 export class NewDealComponent implements OnInit {
   createDealForm: FormGroup;
   submitted = false;
+
+  dueDateCal: Date;
+  minDate:Date;
+  maxDate:Date;
 
   AllCategories: any;
   Categories1: any;
   Categories2: any;
   Categories3: any;
   dealImages: any;
-imagesFiles:any;
-  newDeal: any ={};
+  imagesFiles: any;
+  newDeal: any = {};
 
   constructor(
     private formBuilder: FormBuilder,
     private dal: DALService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private messageService: MessageService
+  ) {
+ 
+    let currDate1=new Date();
+    this.minDate=currDate1;
+    this.minDate.setDate(this.minDate.getDate() + 6);
+
+    let currDate2=new Date();
+    this.maxDate=currDate2;
+    this.maxDate.setDate(this.maxDate.getDate() + 30);
+  }
 
   ngOnInit() {
     this.createDealForm = this.formBuilder.group({
       name: ["", Validators.required],
+      dueDate: [null],
       description: ["", Validators.required],
       startPrice: ["", [Validators.required]],
-      dueDate: ["", [Validators.required, DateValidator]],
-      category1: ["0", Validators.required],
-      category2: ["0", Validators.required],
-      category3: ["0", Validators.required]
+      category1: ["0"],
+      category2: ["0"],
+      category3: ["0"]
     });
 
     this.dal.getAllCategories().then(x => {
@@ -79,7 +95,7 @@ imagesFiles:any;
     this.newDeal.DealId = null;
     this.newDeal.Name = this.createDealForm.controls.name.value;
     this.newDeal.Description = this.createDealForm.controls.description.value;
-    this.newDeal.DueDate = this.createDealForm.controls.dueDate.value;
+    this.newDeal.DueDate = this.dueDateCal;
     this.newDeal.StartPrice = parseInt(
       this.createDealForm.controls.startPrice.value
     );
@@ -96,10 +112,24 @@ imagesFiles:any;
     this.dal.uploadImages(this.imagesFiles);
 
     this.dal.saveDeal(this.newDeal).subscribe(res => {
-    
-      alert("הדיל נוסף בהצלחה!");
-      this.router.navigate(["/"]);
+      if (res == true) {
+        this.messageService.add({
+          severity: "success",
+          summary: "הדיל נוסף בהצלחה!",
+          detail: ""
+        });
+      } else {
+        this.messageService.add({
+          severity: "error",
+          summary: "הוספת הדיל נכשלה!",
+          detail: ""
+        });
+      }
     });
+  }
+
+  redirectToHome() {
+    this.router.navigate(["/"]);
   }
 
   public uploadFile = event => {
@@ -130,6 +160,6 @@ imagesFiles:any;
         }
       }
     }
-    this.imagesFiles=event.files;
+    this.imagesFiles = event.files;
   };
 }

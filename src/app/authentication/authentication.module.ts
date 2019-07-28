@@ -8,6 +8,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {FormsModule} from '@angular/forms';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     AuthenticationRoutingModule,
     ReactiveFormsModule,
     SelectButtonModule,
-    FormsModule
+    FormsModule,
+    ToastModule
   ]
 })
 export class AuthenticationModule { }

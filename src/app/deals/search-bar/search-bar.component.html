@@ -31,7 +31,7 @@
       <div class="range_price filter-item">
             <span class="max_price"><span class="bold">{{rangeValues[1]}}</span>שח</span>
             <p-slider [(ngModel)]="rangeValues" style="display: inline-block;" [style]="{'width':'14em'}"
-                  [animate]="true" [range]="true" [step]="10" [max]="this.maxPrice" (onChange)="searchByPriceRange($event)">
+                  [animate]="true" [range]="true" [step]="10" [max]="this.maxPrice+1" (onChange)="searchByPriceRange($event)">
             </p-slider>
             <span class="min_price"><span class="bold">{{rangeValues[0]}}</span>שח</span>
       </div>

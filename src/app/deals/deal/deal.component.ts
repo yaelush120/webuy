@@ -7,11 +7,13 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { DALService } from "src/app/Services/DAL.service";
 import { BaseDealComponent } from "src/app/base/base-deal.component";
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-deal",
   templateUrl: "./deal.component.html",
-  styleUrls: ["./deal.component.scss"]
+  styleUrls: ["./deal.component.scss"],
+  providers: [MessageService]
 })
 export class DealComponent extends BaseDealComponent implements OnInit {
   curDate;
@@ -26,9 +28,10 @@ export class DealComponent extends BaseDealComponent implements OnInit {
     private router: Router,
     private dataLayer: DALService,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private msgService: MessageService
   ) {
-    super(authS, dataLayer);
+    super(authS, dataLayer,msgService);
 
     this.notificationForm = this.formBuilder.group({
       price: [""],
@@ -44,7 +47,7 @@ export class DealComponent extends BaseDealComponent implements OnInit {
     this.timeOver = distance > 0 ;
     if(this.currentUser != null)
       // this.hrefLink ="https://api.whatsapp.com/send?phone=972"+this.currentUser.phone+"&text=webuy";
-      var curentUrl ="מצאתי דיל שיכול לעניין אותך";
+      var curentUrl ="מצאתי דיל שיכול לעניין אותך: ";
         this.hrefLink ="https://web.whatsapp.com/send?text=" + curentUrl + this.deal.description+ "http://localhost:4200/dashboard/deals/deal-details/"+this.deal.dealId;
   }
 
@@ -60,7 +63,11 @@ export class DealComponent extends BaseDealComponent implements OnInit {
 
     this.dataLayer.saveNotification(newNotification).subscribe(res => {
       this.showNotification=false;
-      alert("הגדרותיך נקלטו במערכת!");
+      this.msgService.add({
+        severity: "success",
+        summary: "הגדרותיך נקלטו במערכת!",
+        detail: ""
+      });
     });
   }
 }

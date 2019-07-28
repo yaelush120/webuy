@@ -12,8 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
 import {FileUploadModule} from 'primeng/fileupload';
 import {SliderModule} from 'primeng/slider';
-import {CalendarModule} from 'primeng/calendar';
 import { SearchBarComponent } from '../deals/search-bar/search-bar.component';
+import {CalendarModule} from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SearchBarComponent } from '../deals/search-bar/search-bar.component';
     GalleriaModule,
     FileUploadModule,
     SliderModule,
-    CalendarModule
+    CalendarModule,
+    ToastModule
   ]
 })
 export class DealsModule { }

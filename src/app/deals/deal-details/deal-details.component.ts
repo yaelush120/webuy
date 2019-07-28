@@ -8,21 +8,24 @@ import { AuthenticationService } from "src/app/Services/authentication.service."
 import { $ } from "protractor";
 import { BaseDealComponent } from "src/app/base/base-deal.component";
 import { state } from '@angular/animations';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-deal-details",
   templateUrl: "./deal-details.component.html",
-  styleUrls: ["./deal-details.component.scss"]
+  styleUrls: ["./deal-details.component.scss"],
+  providers: [MessageService]
 })
 export class DealDetailsComponent extends BaseDealComponent {
   constructor(
     private authS: AuthenticationService,
     private dataLayer: DALService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private msgService: MessageService
     //,private state: RouterStateSnapshot
   ) {
-    super(authS, dataLayer);
+    super(authS, dataLayer,msgService);
   }
   show=false;
   bidHistory: [];
@@ -94,12 +97,22 @@ export class DealDetailsComponent extends BaseDealComponent {
           //Add Notification
           this.dataLayer.pushNotification(dealId,'price',this.priceTxt);
 
-          alert("הצעתך נקלטה!");
+          this.msgService.add({
+            severity: "success",
+            summary: "הצעתך נקלטה!",
+            detail: ""
+          });
+
           this.priceTxt = 0;
           this.getData();
         }
         if (x == false) {
-          alert("ארעה שגיאה!");
+
+          this.msgService.add({
+            severity: "error",
+            summary: "אירעה שגיאה!",
+            detail: ""
+          });
         }
       });
     } else {

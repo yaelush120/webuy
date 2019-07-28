@@ -1,6 +1,11 @@
 .addForm{
     direction: rtl;
 }
+.dueDate{
+    text-align: right;
+    margin-bottom:15px !important;
+}
+
 .form-group {
     select{
         margin-left: 15px;
@@ -9,9 +14,7 @@
     input{
         margin-bottom: 0px !important;
     }
-    input.dueDate{
-        margin-bottom:15px !important;
-    }
+    
     margin-bottom: 0px !important;
 }
 .form-group.top{
@@ -25,9 +28,14 @@
     margin-bottom: 0px;
 }
 .ui-button{
-    background-color: #2BBBAD !important;
+    //background-color: #2BBBAD !important;
 }
 h3{
     text-shadow: 2px 2px #6186825e;
 
+}
+
+::ng-deep .dueDate input{
+    padding-right: 0px;
+    margin-bottom: 20px;
 }

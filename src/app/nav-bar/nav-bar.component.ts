@@ -3,6 +3,7 @@ import { AuthenticationService } from "src/app/Services/authentication.service."
 import { User } from "src/app/Entities/User";
 import { extend } from 'webdriver-js-extender';
 import { BaseComponent } from 'src/app/base/base.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-nav-bar",
@@ -12,7 +13,7 @@ import { BaseComponent } from 'src/app/base/base.component';
 export class NavBarComponent extends BaseComponent implements OnInit {
   currentUser: User;
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService,private router: Router) {
     super(authService);
   }
 
@@ -21,5 +22,6 @@ export class NavBarComponent extends BaseComponent implements OnInit {
   logout()
   {
     this.authService.logout();
+    this.router.navigate(["/"]);
   }
 }

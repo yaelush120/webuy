@@ -70,14 +70,6 @@ export class DALService {
         }));
   }
 
-  saveUser(newUser:any)
-  {
-    return this.http.post("http://localhost:54267/api/User/SaveUser",newUser,this._options)
-        .pipe(map(data => {
-            return data;
-        }));
-  }
-
   saveNotification(newNotification)
   {
     return this.http.post("http://localhost:54267/api/Notification/SaveNotification",newNotification,this._options)
@@ -142,7 +134,7 @@ export class DALService {
 
   uploadImages(files:any)
   {
-    if(files.length>0)
+    if(files!=undefined && files.length>0)
     {
       files.forEach(x => {
         let fileToUpload = <File>x;

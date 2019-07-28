@@ -4,17 +4,19 @@ import { AuthenticationService } from '../Services/authentication.service.';
 import { BaseComponent } from './base.component';
 import { ActivatedRoute } from '@angular/router';
 import { DALService } from '../Services/DAL.service';
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: 'app-base-deal',
-  template: ``
+  template: ``,
+  providers: [MessageService]
 })
 
 export class BaseDealComponent extends BaseComponent implements OnInit {
 
   currentUser: User;
 
-  constructor(private authService: AuthenticationService,private dal: DALService) {
+  constructor(private authService: AuthenticationService,private dal: DALService,private messageService: MessageService) {
     super(authService);
   }
 
@@ -46,10 +48,19 @@ export class BaseDealComponent extends BaseComponent implements OnInit {
           this.dal.pushNotification(deal.dealId,'members',deal.inCount);
         }
 
-        alert(msgSuccess);
+        this.messageService.add({
+          severity: "success",
+          summary: msgSuccess,
+          detail: ""
+        });
       }
       if (x == false) {
-        alert(msgError);
+   
+        this.messageService.add({
+          severity: "error",
+          summary: msgError,
+          detail: ""
+        });
       }
     });
   }

@@ -1,5 +1,6 @@
+<p-toast position="center"></p-toast>
 <div class="transperent_block " style="background-color:#cccccc;">
-  <img src="/assets/saveImg/{{deal.img1}}" class="img-responsive" alt="">
+  <img *ngIf="deal.img1!=null" src="/assets/saveImg/{{deal.img1}}" class="img-responsive" alt="">
 
   <div class="black_hover_block">
     <div class="blur"></div>
@@ -32,7 +33,7 @@
         <span class="price">{{deal.currentPrice}}</span>
         <p style="-webkit-box-orient: vertical;">{{deal.description}}</p>
         <a class=" btn btn-default btn-more-details" [routerLink]="['../deal-details', deal.dealId]" [hidden]="!timeOver">לפרטים</a>
-        <a class=" btn btn-default btn-more-details timeHover" [hidden]="timeOver">הדייל נסגר</a>
+        <a class=" btn btn-default btn-more-details timeHover" [hidden]="timeOver">הדיל נסגר</a>
       </div>
       <div class="notifications" *ngIf="showNotification">
         <form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">

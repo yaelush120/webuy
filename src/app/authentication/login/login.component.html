@@ -1,3 +1,4 @@
+<p-toast position="center"></p-toast>
 <div class="jumbotron">
     <div class="container">
         <div class="row">
@@ -5,24 +6,22 @@
                 <h3>התחברות</h3>
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                        <label for="username">שם משתמש</label>
-                        <input type="text" formControlName="username" class="form-control"
+                        <input placeholder="שם משתמש" type="text" formControlName="username" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                             <div *ngIf="f.username.errors.required">חובה להזין שם משתמש</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password">סיסמא</label>
-                        <input type="password" formControlName="password" class="form-control"
+                        <input placeholder="סיסמא" type="password" formControlName="password" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">חובה להזין סיסמא</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary">התחברות</button>
-                        <a [routerLink]="['../sign-up']" class="btn btn-link">הרשמה</a>
+                        <button class="btn btn-default">התחברות</button>
+                        <!-- <a [routerLink]="['../sign-up']" class="btn btn-link">הרשמה</a> -->
                     </div>
                 </form>
             </div>

@@ -3,11 +3,13 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthenticationService } from "src/app/Services/authentication.service.";
 import { first } from 'rxjs/operators';
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.sass"]
+  styleUrls: ["./login.component.scss"],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private messageService: MessageService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -51,17 +54,25 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                if(data !=undefined)
+                if(data !=undefined && data.length!=0)
                 {
                   this.router.navigate([this.returnUrl]);
                 }
                 else
                 {
-                  alert('משתמש לא נמצא!');
+                  this.messageService.add({
+                    severity: "error",
+                    summary: "המשתמש אינו קיים במערכת",
+                    detail: ""
+                  });
                 }
               },
               error => {
-                  alert(error);
+                this.messageService.add({
+                  severity: "error",
+                  summary: "אירעה שגיאה בהזדהות!",
+                  detail: ""
+                });
               });
   }
 }
